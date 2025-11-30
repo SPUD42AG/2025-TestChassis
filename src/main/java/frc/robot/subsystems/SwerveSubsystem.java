@@ -89,19 +89,19 @@ public class SwerveSubsystem extends SubsystemBase {
         return () -> {
             ChassisSpeeds chassisSpeeds = new ChassisSpeeds();
     
-            final double inputxraw = driverController.getLeftY() * -1.0;
-            final double inputyraw = driverController.getLeftX() * -1.0;
-            final double inputomegaraw;
+            final double inputXRaw = driverController.getLeftY() * -1.0;
+            final double inputYRaw = driverController.getLeftX() * -1.0;
+            final double inputOmegaRaw;
             
-            inputomegaraw = driverController.getRightX() * 1.0;
+            inputOmegaRaw = driverController.getRightX() * 1.0;
     
-            final double inputx = applyResponseCurve(MathUtil.applyDeadband(inputxraw, STICK_DEADBAND));
-            final double inputy = applyResponseCurve(MathUtil.applyDeadband(inputyraw, STICK_DEADBAND));
-            final double inputomega = applyResponseCurve(MathUtil.applyDeadband(inputomegaraw, STICK_DEADBAND));
+            final double inputX = applyResponseCurve(MathUtil.applyDeadband(inputXRaw, STICK_DEADBAND));
+            final double inputY = applyResponseCurve(MathUtil.applyDeadband(inputYRaw, STICK_DEADBAND));
+            final double inputOmega = applyResponseCurve(MathUtil.applyDeadband(inputOmegaRaw, STICK_DEADBAND));
     
-            chassisSpeeds.vxMetersPerSecond = inputx * MAX_SPEED;
-            chassisSpeeds.vyMetersPerSecond = inputy * MAX_SPEED;
-            chassisSpeeds.omegaRadiansPerSecond = inputomega * MAX_ANGULAR_SPEED.in(RadiansPerSecond);
+            chassisSpeeds.vxMetersPerSecond = inputX * MAX_SPEED;
+            chassisSpeeds.vyMetersPerSecond = inputY * MAX_SPEED;
+            chassisSpeeds.omegaRadiansPerSecond = inputOmega * MAX_ANGULAR_SPEED.in(RadiansPerSecond);
 
             chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(chassisSpeeds, swerve.getPose().getRotation());
             chassisSpeeds = rotateLinearChassisSpeeds(chassisSpeeds, TELEOP_HEADING_OFFSET);
