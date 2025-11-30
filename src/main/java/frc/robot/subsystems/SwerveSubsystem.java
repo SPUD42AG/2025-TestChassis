@@ -93,7 +93,7 @@ public class SwerveSubsystem extends SubsystemBase {
             final double inputYRaw = driverController.getLeftX() * -1.0;
             final double inputOmegaRaw;
             
-            inputOmegaRaw = driverController.getRightX() * 1.0;
+            inputOmegaRaw = driverController.getRightX() * -1.0;
     
             final double inputX = applyResponseCurve(MathUtil.applyDeadband(inputXRaw, STICK_DEADBAND));
             final double inputY = applyResponseCurve(MathUtil.applyDeadband(inputYRaw, STICK_DEADBAND));
