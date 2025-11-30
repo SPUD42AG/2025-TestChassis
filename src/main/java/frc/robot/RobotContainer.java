@@ -20,7 +20,7 @@ public class RobotContainer {
     private void configureBindings() {
         swerveSubsystem.setDefaultCommand(driveCommand);
 
-        ChassisSpeeds driverNudgeUp = new ChassisSpeeds(0.25, 0, 0);
+        ChassisSpeeds driverNudgeUp = new ChassisSpeeds(0.25, 0.25, 0.25);
         driverController.povUp().whileTrue(
             Commands.run(() -> {
                 swerveSubsystem.drive(driverNudgeUp);

@@ -22,7 +22,6 @@
         "angle": false
     },
     
-    "absoluteEncoderInverted": false,
     "absoluteEncoderOffset": 0,
     
     "location": {
