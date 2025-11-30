@@ -20,6 +20,8 @@ public final class Constants {
 
         public static final double STICK_DEADBAND = 0.05;
 
-        public static Rotation2d TELEOP_HEADING_OFFSET = Rotation2d.fromDegrees(0.0);
+        public static final Rotation2d TELEOP_HEADING_OFFSET = Rotation2d.fromDegrees(0.0);
+
+        public static final int DRIVE_CONTROLLER_PORT = 0;
     }
 }

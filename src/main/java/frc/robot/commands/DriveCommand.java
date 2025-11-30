@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import static frc.robot.subsystems.SwerveSubsystem.*;
 import frc.robot.subsystems.SwerveSubsystem;
 
-public class Drive extends Command {
+public class DriveCommand extends Command {
     private final SwerveSubsystem swerveSubsystem;
     private final CommandXboxController driverController;
 
-    public Drive(CommandXboxController driverController, SwerveSubsystem swerveSubsystem) {
+    public DriveCommand(CommandXboxController driverController, SwerveSubsystem swerveSubsystem) {
         this.swerveSubsystem = swerveSubsystem;
         this.driverController = driverController;
 

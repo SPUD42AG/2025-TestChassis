@@ -23,7 +23,7 @@ import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class SwerveSubsystem extends SubsystemBase {
     private final SwerveDrive swerveDrive;
-    private final File directory = new File(Filesystem.getDeployDirectory(),"swerve");
+    private final File directory = new File(Filesystem.getDeployDirectory(), "swerve/test-chassis");
 
     public SwerveSubsystem() {
         try {
