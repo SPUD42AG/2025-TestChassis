@@ -9,6 +9,9 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.StructPublisher;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -22,8 +25,11 @@ import swervelib.telemetry.SwerveDriveTelemetry;
 import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class SwerveSubsystem extends SubsystemBase {
-    private final SwerveDrive swerveDrive;
+    public final SwerveDrive swerveDrive;
     private final File directory = new File(Filesystem.getDeployDirectory(), "swerve/test-chassis");
+
+    StructPublisher<Pose2d> posePublisher = NetworkTableInstance.getDefault().getStructTopic("Pose", Pose2d.struct).publish();
+    DoublePublisher speedPublisher = NetworkTableInstance.getDefault().getDoubleTopic("Speed").publish();
 
     public SwerveSubsystem() {
         try {
@@ -31,7 +37,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 MAX_SPEED,
                 new Pose2d(new Translation2d(Meter.of(2),
                 Meter.of(5)),
-                Rotation2d.fromDegrees(180))
+                Rotation2d.fromDegrees(0))
             );
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -39,12 +45,27 @@ public class SwerveSubsystem extends SubsystemBase {
         SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
     }
 
+    @Override
+    public void periodic() {
+        posePublisher.accept(getPose());
+        speedPublisher.accept(getSpeed());
+    }
+
     public void drive(ChassisSpeeds chassisSpeeds) {
         swerveDrive.drive(chassisSpeeds);
     }
 
+    public ChassisSpeeds getFieldVelocity() {
+        return swerveDrive.getFieldVelocity();
+    }
+
     public Pose2d getPose() {
         return swerveDrive.getPose();
+    }
+
+    public double getSpeed() {
+        ChassisSpeeds fieldVelocity = getFieldVelocity();
+        return Math.sqrt(fieldVelocity.vxMetersPerSecond * fieldVelocity.vxMetersPerSecond + fieldVelocity.vyMetersPerSecond * fieldVelocity.vyMetersPerSecond);
     }
 
     static private double applyResponseCurve(double x) {

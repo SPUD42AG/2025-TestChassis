@@ -13,7 +13,7 @@ public final class Constants {
         public static final double CHASSIS_RADIUS = Math.hypot(
                 TRACK_WIDTH / 2, WHEEL_BASE / 2);
 
-        public static final double MAX_SPEED = Units.feetToMeters(9999999);
+        public static final double MAX_SPEED = Units.feetToMeters(6);
         public static final AngularVelocity MAX_ANGULAR_SPEED = RadiansPerSecond.of(MAX_SPEED * Math.PI / CHASSIS_RADIUS);
 
         public static final boolean IS_FIELD_RELATIVE = true;
