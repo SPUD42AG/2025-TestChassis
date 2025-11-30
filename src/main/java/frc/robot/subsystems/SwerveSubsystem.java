@@ -103,7 +103,9 @@ public class SwerveSubsystem extends SubsystemBase {
             chassisSpeeds.vyMetersPerSecond = inputY * MAX_SPEED;
             chassisSpeeds.omegaRadiansPerSecond = inputOmega * MAX_ANGULAR_SPEED.in(RadiansPerSecond);
 
-            chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(chassisSpeeds, swerve.getPose().getRotation());
+            if (isFieldRelative) {
+                chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(chassisSpeeds, swerve.getPose().getRotation());
+            }
             chassisSpeeds = rotateLinearChassisSpeeds(chassisSpeeds, TELEOP_HEADING_OFFSET);
     
             return chassisSpeeds;
