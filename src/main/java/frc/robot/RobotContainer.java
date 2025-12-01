@@ -21,30 +21,37 @@ public class RobotContainer {
         swerveSubsystem.setDefaultCommand(driveCommand);
 
         ChassisSpeeds driverNudgeUp = new ChassisSpeeds(0.25, 0, 0);
+        ChassisSpeeds driverNudgeDown = new ChassisSpeeds(-0.25, 0, 0);
+        ChassisSpeeds driverNudgeLeft = new ChassisSpeeds(0, 0.25, 0);
+        ChassisSpeeds driverNudgeRight = new ChassisSpeeds(0, -0.25, 0);
+
         driverController.povUp().whileTrue(
             Commands.run(() -> {
                 swerveSubsystem.drive(driverNudgeUp);
             })
         );
 
-        ChassisSpeeds driverNudgeDown = new ChassisSpeeds(-0.25, 0, 0);
         driverController.povDown().whileTrue(
             Commands.run(() -> {
                 swerveSubsystem.drive(driverNudgeDown);
             })
         );
 
-        ChassisSpeeds driverNudgeLeft = new ChassisSpeeds(0, 0.25, 0);
         driverController.povLeft().whileTrue(
             Commands.run(() -> {
                 swerveSubsystem.drive(driverNudgeLeft);
             })
         );
 
-        ChassisSpeeds driverNudgeRight = new ChassisSpeeds(0, -0.25, 0);
         driverController.povRight().whileTrue(
             Commands.run(() -> {
                 swerveSubsystem.drive(driverNudgeRight);
+            })
+        );
+
+        driverController.b().whileTrue(
+            Commands.run(() -> {
+                IS_FIELD_RELATIVE = !IS_FIELD_RELATIVE;
             })
         );
     }

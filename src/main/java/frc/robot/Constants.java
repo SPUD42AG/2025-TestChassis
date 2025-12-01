@@ -16,7 +16,7 @@ public final class Constants {
         public static final double MAX_SPEED = Units.feetToMeters(12);
         public static final AngularVelocity MAX_ANGULAR_SPEED = RadiansPerSecond.of(MAX_SPEED * Math.PI / CHASSIS_RADIUS);
 
-        public static final boolean IS_FIELD_RELATIVE = false;
+        public static boolean IS_FIELD_RELATIVE = false;
 
         public static final double STICK_DEADBAND = 0.05;
 
