@@ -10,8 +10,7 @@ public final class Constants {
     public static final class SwerveConstants {
         public static final double TRACK_WIDTH = 22.475 / 12;
         public static final double WHEEL_BASE = 22.475 / 12;
-        public static final double CHASSIS_RADIUS = Math.hypot(
-                TRACK_WIDTH / 2, WHEEL_BASE / 2);
+        public static final double CHASSIS_RADIUS = Math.hypot(TRACK_WIDTH / 2, WHEEL_BASE / 2);
 
         public static final double MAX_SPEED = Units.feetToMeters(12);
         public static final AngularVelocity MAX_ANGULAR_SPEED = RadiansPerSecond.of(MAX_SPEED * Math.PI / CHASSIS_RADIUS);
