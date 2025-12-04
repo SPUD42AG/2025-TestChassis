@@ -1,19 +1,19 @@
 {
     "drive": {
         "type": "talonfx",
-        "id": 4,
+        "id": 8,
         "canbus": "rio"
     },
     
     "angle": {
         "type": "talonfx",
-        "id": 2,
+        "id": 10,
         "canbus": "rio"
     },
     
     "encoder": {
         "type": "cancoder",
-        "id": 3,
+        "id": 9,
         "canbus": "rio"
     },
     

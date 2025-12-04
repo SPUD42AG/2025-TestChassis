@@ -7,13 +7,13 @@
     
     "angle": {
         "type": "talonfx",
-        "id": 6,
+        "id": 7,
         "canbus": "rio"
     },
     
     "encoder": {
         "type": "cancoder",
-        "id": 7,
+        "id": 6,
         "canbus": "rio"
     },
     
