@@ -5,5 +5,5 @@
         "d": 0
     },
     
-    "angleJoystickRadiusDeadband": 0.5
+    "angleJoystickRadiusDeadband": 5
 }

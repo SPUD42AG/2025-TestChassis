@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.StructPublisher;
@@ -30,6 +31,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     StructPublisher<Pose2d> posePublisher = NetworkTableInstance.getDefault().getStructTopic("Pose", Pose2d.struct).publish();
     DoublePublisher speedPublisher = NetworkTableInstance.getDefault().getDoubleTopic("Speed").publish();
+    BooleanPublisher fieldRelativePublisher = NetworkTableInstance.getDefault().getBooleanTopic("isFieldRelative").publish();
 
     public SwerveSubsystem() {
         try {
@@ -49,6 +51,7 @@ public class SwerveSubsystem extends SubsystemBase {
     public void periodic() {
         posePublisher.accept(getPose());
         speedPublisher.accept(getSpeed());
+        fieldRelativePublisher.accept(IS_FIELD_RELATIVE);
     }
 
     public void drive(ChassisSpeeds chassisSpeeds) {

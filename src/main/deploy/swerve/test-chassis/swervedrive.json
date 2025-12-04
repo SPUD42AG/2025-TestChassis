@@ -1,6 +1,6 @@
 {
     "imu": {
-        "type": "pigeon2",
+        "type": "pigeon",
         "id": 15,
         "canbus": "rio"
     },
@@ -12,5 +12,5 @@
         "backright.json"
     ],
 
-    "invertedIMU": true
+    "invertedIMU": false
 }

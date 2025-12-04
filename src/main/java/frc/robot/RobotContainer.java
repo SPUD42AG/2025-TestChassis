@@ -49,9 +49,15 @@ public class RobotContainer {
             })
         );
 
-        driverController.b().whileTrue(
-            Commands.run(() -> {
+        driverController.b().onTrue(
+            Commands.runOnce(() -> {
                 IS_FIELD_RELATIVE = !IS_FIELD_RELATIVE;
+            })
+        );
+
+        driverController.a().onTrue(
+            Commands.runOnce(() -> {
+                TELEOP_HEADING_OFFSET = swerveSubsystem.getPose().getRotation();
             })
         );
     }
